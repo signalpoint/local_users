@@ -15,6 +15,10 @@ function local_users_menu() {
               "data-icon":"add",
               "class":"ui-btn-right"
             }
+          },
+          "pages":{
+            "value":["local_users/list"],
+            "mode":"include",
           }
         }
       },
@@ -143,15 +147,15 @@ function local_users_load_users() {
 }
 
 /**
- * Implements hook_device_online().
+ * Implements hook_deviceready().
  */
-function local_users_device_online() {
+function local_users_deviceready() {
   try {
-    // For now, we don't want the device_online to continue execution.
+    // For now, we don't want the deviceready to continue execution.
     return false;
   }
   catch (error) {
-    alert('local_user_device_online - ' + error);
+    alert('local_users_deviceready - ' + error);
   }
 }
 
