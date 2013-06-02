@@ -4,27 +4,29 @@
 function local_users_menu() {
   try {
     var items = {
-      'local_users/add':{
-        'title':'Add',
-        'page_callback':'drupalgap_get_form',
-        'page_arguments':['local_users_add_form'],
-        'region':'header',
-        'options':{
-          'attributes':{
-            'data-icon':'add',
-            'class':'ui-btn-right'
+      "local_users/add":{
+        "title":"Add",
+        "page_callback":"drupalgap_get_form",
+        "page_arguments":["local_users_add_form"],
+        "region":{
+          "name":"header",
+          "options":{
+            "attributes":{
+              "data-icon":"add",
+              "class":"ui-btn-right"
+            }
           }
         }
       },
-      'local_users/list':{
-        'title':'Local Users',
-        'page_callback':'local_users_list_page',
+      "local_users/list":{
+        "title":"Local Users",
+        "page_callback":"local_users_list_page"
       }
     };
     return items;
   }
   catch (error) {
-    alert(' - ' + error);
+    alert('local_users_menu - ' + error);
   }
 }
 
