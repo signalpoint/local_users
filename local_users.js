@@ -147,6 +147,33 @@ function local_users_load_users() {
 }
 
 /**
+ * Implements hook_mvc_model().
+ */
+function local_users_mvc_model() {
+  var models = {
+    "local_user":{
+      "uid":{
+        "type":"int",
+        "title":"User ID",
+        "required":true,
+        "primary_key":true
+      },
+      "name":{
+        "type":"string",
+        "title":"Name",
+        "required":true
+      },
+      "mail":{
+        "type":"string",
+        "title":"E-mail Address",
+        "required":false
+      }
+    }
+  };
+  return models;
+}
+
+/**
  * Implements hook_deviceready().
  */
 function local_users_deviceready() {
