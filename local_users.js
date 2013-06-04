@@ -7,7 +7,8 @@ function local_users_menu() {
       "local_users/add":{
         "title":"Add",
         "page_callback":"drupalgap_get_form",
-        "page_arguments":["local_users_add_form"],
+        /*"page_arguments":["local_users_add_form"],*/
+        "page_arguments":["drupalgap_mvc_model_create_form", "local_users", "user"],
         "region":{
           "name":"header",
           "options":{
@@ -117,9 +118,6 @@ function local_users_list_page() {
       });
       content.local_users_list_items.items = items;
     }
-    else {
-      alert('no users');
-    }
     return content;
   }
   catch (error) {
@@ -151,20 +149,20 @@ function local_users_load_users() {
  */
 function local_users_mvc_model() {
   var models = {
-    "local_user":{
+    "user":{
       "uid":{
-        "type":"int",
+        "type":"hidden",
         "title":"User ID",
         "required":true,
         "primary_key":true
       },
       "name":{
-        "type":"string",
+        "type":"textfield",
         "title":"Name",
         "required":true
       },
       "mail":{
-        "type":"string",
+        "type":"email",
         "title":"E-mail Address",
         "required":false
       }
