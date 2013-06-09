@@ -1,3 +1,5 @@
+// TODO - this module should be expanded into local_entities!.
+
 /**
  * Implements hook_menu().
  */
@@ -41,7 +43,8 @@ function local_users_menu() {
 function local_users_add_form() {
   try {
     var form = {
-      'id':'local_users_add_form',
+      'id':'local_users_add_form', /* TODO - the id should be auto set by DG, it
+                                      is always equal to the function name */
       'elements':{
         'name':{
           'type':'textfield',
@@ -150,21 +153,23 @@ function local_users_load_users() {
 function local_users_mvc_model() {
   var models = {
     "user":{
-      "uid":{
-        "type":"hidden",
-        "title":"User ID",
-        "required":true,
-        "primary_key":true
-      },
-      "name":{
-        "type":"textfield",
-        "title":"Name",
-        "required":true
-      },
-      "mail":{
-        "type":"email",
-        "title":"E-mail Address",
-        "required":false
+      "primary_key":"uid",
+      "fields":{
+        /*"uid":{
+          "type":"hidden",
+          "title":"User ID",
+          "required":true
+        },*/
+        "name":{
+          "type":"textfield",
+          "title":"Name",
+          "required":true
+        },
+        "mail":{
+          "type":"email",
+          "title":"E-mail Address",
+          "required":false
+        }
       }
     }
   };
