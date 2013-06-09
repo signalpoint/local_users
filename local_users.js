@@ -9,7 +9,6 @@ function local_users_menu() {
       "local_users/add":{
         "title":"Add",
         "page_callback":"drupalgap_get_form",
-        /*"page_arguments":["local_users_add_form"],*/
         "page_arguments":["drupalgap_mvc_model_create_form", "local_users", "user"],
         "region":{
           "name":"header",
@@ -112,9 +111,8 @@ function local_users_list_page() {
         'attributes':{'id':'local_users_list_items'},
       }
     };
-    var local_users = local_users_load_users();
+    var local_users = collection_load('local_users', 'user');
     if (local_users) {
-      alert('got some users!');
       var items = [];
       $.each(local_users, function(uid, user){
           items.push(l(user.name, ''));
@@ -155,11 +153,6 @@ function local_users_mvc_model() {
     "user":{
       "primary_key":"uid",
       "fields":{
-        /*"uid":{
-          "type":"hidden",
-          "title":"User ID",
-          "required":true
-        },*/
         "name":{
           "type":"textfield",
           "title":"Name",
